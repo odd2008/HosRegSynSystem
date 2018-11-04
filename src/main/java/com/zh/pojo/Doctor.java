@@ -11,7 +11,7 @@ public class Doctor {
 	// 部门ID
 	private String deptid;
 	// 医生姓名
-	private String dname;
+	private String docname;
 	// 医生职称
 	private String dtitle;
 	// 医生照片地址
@@ -28,11 +28,11 @@ public class Doctor {
 	public void setDeptid(String deptid) {
 		this.deptid = deptid;
 	}
-	public String getDname() {
-		return dname;
+	public String getDocname() {
+		return docname;
 	}
-	public void setDname(String dname) {
-		this.dname = dname;
+	public void setDocname(String docname) {
+		this.docname = docname;
 	}
 	public String getDtitle() {
 		return dtitle;
@@ -46,17 +46,21 @@ public class Doctor {
 	public void setDurl(String durl) {
 		this.durl = durl;
 	}
-	public Doctor(String did, String deptid, String dname, String dtitle, String durl) {
+	public Doctor(String did, String deptid, String docname, String dtitle, String durl) {
+		super();
 		this.did = did;
 		this.deptid = deptid;
-		this.dname = dname;
+		this.docname = docname;
 		this.dtitle = dtitle;
 		this.durl = durl;
 	}
-	public Doctor() {}
+	public Doctor() {
+		super();
+	}
 	@Override
 	public String toString() {
-		return "Doctor [did=" + did + ", deptid=" + deptid + ", dname=" + dname + ", dtitle=" + dtitle + ", durl="
+		return "Doctor [did=" + did + ", deptid=" + deptid + ", docname=" + docname + ", dtitle=" + dtitle + ", durl="
 				+ durl + "]";
 	}
+	
 }

@@ -25,4 +25,13 @@ public class PatientUserImpl implements PatientUserService {
 		return pMapper.login(pUser);
 	}
 
+	@Override
+	public boolean update(PatientUser pUser) {
+		int i = pMapper.update(pUser);
+		if(i > 0) {
+			return true;
+		}
+		return false;
+	}
+
 }

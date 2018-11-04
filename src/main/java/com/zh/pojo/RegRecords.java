@@ -10,10 +10,10 @@ public class RegRecords {
 	private String rid;
 	// 用户ID
 	private String pid;
-	// 部门ID
-	private String deptid;
-	// 医生ID
-	private String did;
+	// 部门名称
+	private String dname;
+	// 医生名称
+	private String docname;
 	// 简要说明
 	private String explain;
 	// 预约挂号时间
@@ -36,17 +36,17 @@ public class RegRecords {
 	public void setPid(String pid) {
 		this.pid = pid;
 	}
-	public String getDeptid() {
-		return deptid;
+	public String getDname() {
+		return dname;
 	}
-	public void setDeptid(String deptid) {
-		this.deptid = deptid;
+	public void setDname(String dname) {
+		this.dname = dname;
 	}
-	public String getDid() {
-		return did;
+	public String getDocname() {
+		return docname;
 	}
-	public void setDid(String did) {
-		this.did = did;
+	public void setDocname(String docname) {
+		this.docname = docname;
 	}
 	public String getExplain() {
 		return explain;
@@ -78,13 +78,13 @@ public class RegRecords {
 	public void setIsmoney(String ismoney) {
 		this.ismoney = ismoney;
 	}
-	public RegRecords(String rid, String pid, String deptid, String did, String explain, String tardate, String nowdate,
-			String flag, String ismoney) {
+	public RegRecords(String rid, String pid, String dname, String docname, String explain, String tardate,
+			String nowdate, String flag, String ismoney) {
 		super();
 		this.rid = rid;
 		this.pid = pid;
-		this.deptid = deptid;
-		this.did = did;
+		this.dname = dname;
+		this.docname = docname;
 		this.explain = explain;
 		this.tardate = tardate;
 		this.nowdate = nowdate;
@@ -96,8 +96,9 @@ public class RegRecords {
 	}
 	@Override
 	public String toString() {
-		return "RegRecords [rid=" + rid + ", pid=" + pid + ", deptid=" + deptid + ", did=" + did + ", explain="
+		return "RegRecords [rid=" + rid + ", pid=" + pid + ", dname=" + dname + ", docname=" + docname + ", explain="
 				+ explain + ", tardate=" + tardate + ", nowdate=" + nowdate + ", flag=" + flag + ", ismoney=" + ismoney
 				+ "]";
 	}
+	
 }

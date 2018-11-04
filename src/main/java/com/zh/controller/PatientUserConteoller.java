@@ -43,14 +43,4 @@ public class PatientUserConteoller {
 		}
 		return "failure";
 	}
-	
-	@RequestMapping("/show.do")
-	public String show(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		PatientUser pUser = (PatientUser) request.getSession().getAttribute("user");
-		if(pUser == null) {
-			response.sendRedirect(request.getContextPath() + "/login.jsp");
-			return null;
-		}
-		return "show";
-	}
 }

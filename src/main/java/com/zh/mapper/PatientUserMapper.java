@@ -2,6 +2,7 @@ package com.zh.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.zh.pojo.PatientUser;
 
@@ -12,4 +13,7 @@ public interface PatientUserMapper {
 	
 	@Select("select pid,purl,pname,password,psex,pdate,phistory,ptel,pcard,pcredit,pmoney from patientuser where pname=#{pname} and password=#{password}")
 	public PatientUser login(PatientUser pUser);
+	
+	@Update("update patientuser set ptel=#{ptel},password=#{password} where pid=#{pid}")
+	public Integer update(PatientUser pUser);
 }

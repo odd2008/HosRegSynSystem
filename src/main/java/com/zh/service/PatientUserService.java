@@ -17,4 +17,11 @@ public interface PatientUserService {
 	 * @return
 	 */
 	public PatientUser login(PatientUser pUser);
+	
+	/***
+	 * 用户修改电话，密码
+	 * @param pUser
+	 * @return
+	 */
+	public boolean update(PatientUser pUser);
 }

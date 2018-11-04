@@ -257,7 +257,7 @@
     	   			data:$("#loginForm").serialize(),
     	   			success:function(result){
     	   				if(result == 'success'){
-    	   					window.location.href = '${pageContext.request.getContextPath()}/patient/show.do';
+    	   					window.location.href = '${pageContext.request.getContextPath()}/user/index.do';
     	   				}
     	   			},
     	   		    error: function (err) {
@@ -306,6 +306,14 @@
 </div>
 </body>
 <script type="text/javascript">
+$(document).ready(function(){
+	$(document).keydown(function(event){
+		if(event.keyCode == 13){
+			login();
+		}
+	});
+});
+
 //设置一个全局的变量，便于保存验证码
 var code;
 function createCode(){
