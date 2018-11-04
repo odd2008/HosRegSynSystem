@@ -5,6 +5,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 别名 -->
 	<typeAliases>
-		<package name="com.kxm.pojo"/>
+		<package name="com.zh.pojo"/>
 	</typeAliases>
 </configuration>
