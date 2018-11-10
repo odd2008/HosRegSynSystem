@@ -1,9 +1,10 @@
-package com.zh.service;
+package com.zh.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zh.mapper.PatientUserMapper;
 import com.zh.pojo.PatientUser;
+import com.zh.service.PatientUserService;
 
 @Service
 public class PatientUserImpl implements PatientUserService {

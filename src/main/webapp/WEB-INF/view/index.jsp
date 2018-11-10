@@ -27,7 +27,7 @@
           <li class="layui-nav-item">
             <a href="javascript:;">${user.pname}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','user/userShow.do')">个人信息</a></dd>
+              <dd><a onclick="x_admin_show('个人信息','${pageContext.request.contextPath}/user/userShow.do')">个人信息</a></dd>
               <dd><a onclick="x_admin_show('切换帐号','${pageContext.request.contextPath}/login.jsp')">切换帐号</a></dd>
               <dd><a href="${pageContext.request.contextPath}/login.jsp">退出</a></dd>
             </dl>
@@ -91,7 +91,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="userReg.jsp">
+                        <a _href="${pageContext.request.contextPath}/user/userReg.do">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>自助挂号</cite>
                         </a>
@@ -127,7 +127,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="echarts1.html">
+                        <a _href="${pageContext.request.contextPath}/care/aidShow.do">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>急救治疗</cite>
                         </a>

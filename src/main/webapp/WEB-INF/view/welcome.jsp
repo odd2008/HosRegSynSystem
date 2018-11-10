@@ -64,11 +64,11 @@
                     <tbody>
                         <tr>
                             <th>版权所有</th>
-                            <td>黄冈师范学院 - 张慧</td>
+                            <td>${admin.owner}</td>
                         </tr>
                         <tr>
                             <th>开发者</th>
-                            <td>张慧(515117743@qq.com)</td></tr>
+                            <td>${admin.oauth}</td></tr>
                     </tbody>
                 </table>
             </div>
