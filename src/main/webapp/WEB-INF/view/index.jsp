@@ -51,7 +51,7 @@
                     <li>
                         <a _href="${pageContext.request.contextPath}/user/userEdit.do">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>修改密码</cite>  
+                            <cite>修改信息</cite>  
                         </a>
                     </li >
                     <li>
@@ -86,7 +86,7 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>我要挂号</cite>
+                    <cite>当日挂号</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">

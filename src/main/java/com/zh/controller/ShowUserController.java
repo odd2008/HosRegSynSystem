@@ -92,9 +92,11 @@ public class ShowUserController {
 	
 	/*****************  挂号相关  *****************/
 	@RequestMapping("/userReg.do")
-	public String userReg(String descr, Model model) {
+	public String userReg(String descr, Model model,HttpServletRequest request) {
 		List<HosDept> hostList = hService.findByDescr(descr);
+		PatientUser pUser = (PatientUser) request.getSession().getAttribute("user");
 		model.addAttribute("hosp",hostList);
+		model.addAttribute("user", pUser);
 		return "userReg";
 	}
 	

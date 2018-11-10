@@ -84,7 +84,13 @@
   	   			url:'${pageContext.request.getContextPath()}/user/update.do',
   	   			data:{"ptel":$('#phone').val(),"password":$('#L_pass').val()},
   	   			success:function(result){
-  	   				layer.alert("修改成功", {icon: 6},function () {});
+  	   			layui.use('layer', function(){
+		  	  	  	var layer = layui.layer;
+		  	  			//5s后自动关闭
+		  	  	  		layer.msg('   信息修改成功~  ', {
+		  	  		        time: 10000, btn: ['好的']
+		  	  		    });
+		  	  		}); 
   	   				$('#L_pass').val('');
   	   				$('#L_repass').val('');
   	   			},
