@@ -14,6 +14,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
+  	<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
   </head>
   
   <body style="padding: 15px;" onload="loadDiv()">
@@ -94,27 +95,30 @@
 		                    <tbody>
 		                        <tr>
 		                            <th>患者姓名:</th>
-		                            <td>柯贤铭</td></tr>
+		                            <td>${user.pname}</td></tr>
 		                        <tr>
 		                            <th>联系方式</th>
-		                            <td>13986566997</td></tr>
+		                            <td>${user.ptel}</td></tr>
 		                        <tr>
 		                            <th>就诊科室</th>
-		                            <td>内科</td></tr>
+		                            <td id="chose_dept"></td></tr>
 		                        <tr>
 		                            <th>就诊医师</th>
-		                            <td>王医生</td></tr>
+		                            <td id="chose_docname"></td></tr>
 		                        <tr>
 		                            <th>就诊时间</th>
-		                            <td>2018-11-10 下午</td></tr>
+		                            <td id="chose_date"></td></tr>
 		                        <tr>
 		                            <th><span style="color: red;">就诊金额</span></th>
-		                            <td><span style="color: red;">18</span> 元</td></tr>
+		                            <td><span style="color: red;" id="chose_money"></span> 元</td></tr>
+		                        <tr>
+		                            <th><span style="color: red;">订单号</span></th>
+		                            <td><span style="color: red;" id="chose_orderid"></span></td></tr>
 		                    </tbody>
 		                </table>
 		                <div style="width: 100%;text-align: center;">
-							<button onclick="" class="layui-btn layui-btn-lg layui-btn-normal">立即缴费</button>
-							<button onclick="" class="layui-btn layui-btn-lg layui-btn-normal">申请欠费</button>
+							<button onclick="payMoney()" class="layui-btn layui-btn-lg layui-btn-normal">立即缴费</button>
+							<button onclick="applyFor()" class="layui-btn layui-btn-lg layui-btn-normal">申请欠费</button>
 						</div>
 		            </div>
 		        	</fieldset>
@@ -195,7 +199,8 @@
   	
  	// 加载医生信息
   	function loadDoctor(){
-  		var deptid = seleDeptId.charAt(seleDeptId.length - 1);
+ 		// dept23
+  		var deptid = seleDeptId.substring(4,seleDeptId.length)
   		$.ajax({
    			type:'POST',
    			url:'${pageContext.request.getContextPath()}/user/showDoctors.do',
@@ -242,6 +247,40 @@
 	  		var layer = layui.layer;
 	  		layer.msg('信息确认无误, 请继续下一步, 挂号缴费');
 		});
+  		
+  		$("#chose_dept").html(seleDeptIdName);
+  		$("#chose_docname").html(doctorName);
+  		
+  		// 确定预约时间
+  		var date = new Date();
+	    var seperator1 = "-";
+	    var seperator2 = ":";
+	    var month = date.getMonth() + 1;
+	    var strDate = date.getDate();
+	    if (month >= 1 && month <= 9) {
+	        month = "0" + month;
+	    }
+	    if (strDate >= 0 && strDate <= 9) {
+	        strDate = "0" + strDate;
+	    }
+	    var nextDate = date.getDate() + 1;
+	    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+	    var nextDay = date.getFullYear() + seperator1 + month + seperator1 + nextDate;
+	    
+	    if (date.getHours() <= 10) {
+	    	$("#chose_date").html(currentdate + " 上午");
+	    	$("#chose_money").html(1);
+	    } else if (date.getHours() > 10 && date.getHours() <= 17) {
+	    	$("#chose_date").html(currentdate + " 下午");
+	    	$("#chose_money").html(2);
+	    } else if (date.getHours() > 17 && date.getHours() <= 20) {
+	    	$("#chose_date").html(currentdate + " 晚上");
+	    	$("#chose_money").html(2);
+	    } else {
+	    	$("#chose_date").html(nextDay + " 上午");
+	    	$("#chose_money").html(1);
+	    }
+	    $("#chose_orderid").html(new Date().getTime());
   	}
   	
   	function conInfoFalse() {
@@ -249,6 +288,63 @@
   		window.open('${pageContext.request.getContextPath()}/user/userEdit.do');   
   	}
   	
+  	// 调用支付宝接口
+  	function payMoney() {
+  		var id = $("#chose_orderid").html();
+		var amount = $("#chose_money").html();
+		$.ajax({
+   			type:'POST',
+   			url:'${pageContext.request.getContextPath()}/user/storeOrder.do',
+   			data:{"pid":'${user.pid}',"dname":seleDeptIdName,"docname":doctorName,"tardate":$("#chose_date").html(),"orderid":id,"money":amount},
+   			success:function(result){
+   				if (result = 'success') {
+   					// 打开支付宝接口
+   					window.open('${pageContext.request.getContextPath()}/user/aliPay.do?WIDout_trade_no='+id+'&WIDtotal_amount='+amount+'&WIDsubject=自挂挂号付费');
+   				} else {
+   					alert("下订单失败，请联系管理员")
+   				}
+   			},
+   		    error: function (err) {
+   		    	alert("数据库异常~")
+   		    }
+   		});
+  	}
+  	
+  	// 申请欠费
+	function applyFor() {
+		var money = $("#chose_money").html()
+		$.ajax({
+   			type:'POST',
+   			url:'${pageContext.request.getContextPath()}/user/applyFor.do',
+   			data:{"money":money},
+   			success:function(result){
+   				if (result = 'success') {
+   					layui.use('layer', function(){
+   				  		var layer = layui.layer;
+   						//8s后自动关闭
+   				  		layer.msg('申请欠款成功，请届时到医院进行支付<br>您可在我的挂号中查看详情', {
+   					        time: 8000, btn: ['好的']
+   					    });
+   					}); 
+   					// 下订单
+   					var id = $("#chose_orderid").html();
+   					var amount = $("#chose_money").html();
+   					$.ajax({
+   			   			type:'POST',
+   			   			url:'${pageContext.request.getContextPath()}/user/storeOrder.do',
+   			   			data:{"pid":'${user.pid}',"dname":seleDeptIdName,"docname":doctorName,"tardate":$("#chose_date").html(),"orderid":id,"money":amount},
+   			   			success:function(result){},
+   			   		    error: function (err) {alert("数据库异常~")}
+   			   		});
+   				} else {
+   					alert("申请失败，请到医院挂号")
+   				}
+   			},
+   		    error: function (err) {
+   		    	alert("数据库异常~")
+   		    }
+   		});
+  	}
   </script>
   <style type="text/css">
   	.myDiv{

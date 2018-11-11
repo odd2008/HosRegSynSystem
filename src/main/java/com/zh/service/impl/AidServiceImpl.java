@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zh.mapper.AidMapper;
+import com.zh.pojo.Adisease;
 import com.zh.pojo.Aidtable;
 import com.zh.service.AidService;
 
@@ -29,5 +30,4 @@ public class AidServiceImpl implements AidService {
 	public Integer count() {
 		return aMapper.count();
 	}
-
 }

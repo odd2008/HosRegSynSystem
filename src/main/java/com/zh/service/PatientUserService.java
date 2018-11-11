@@ -1,5 +1,7 @@
 package com.zh.service;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.zh.pojo.PatientUser;
 
 public interface PatientUserService {
@@ -24,4 +26,20 @@ public interface PatientUserService {
 	 * @return
 	 */
 	public boolean update(PatientUser pUser);
+	
+	/**
+	 * 更新欠款
+	 * @param money
+	 * @param pid
+	 * @return
+	 */
+	public Integer updateMoney(String pcredit,String money,String pid);
+	
+	/**
+	 * 重置密码
+	 * @param purl
+	 * @param pname
+	 * @return
+	 */
+	public Integer updatePassword(String purl,String pname);
 }

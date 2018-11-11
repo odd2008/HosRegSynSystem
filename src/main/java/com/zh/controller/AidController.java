@@ -6,8 +6,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.druid.stat.TableStat.Mode;
+import com.zh.mapper.AdiseaseMapper;
+import com.zh.pojo.Adisease;
 import com.zh.pojo.Aidtable;
 import com.zh.service.AidService;
 
@@ -18,9 +23,19 @@ public class AidController {
 	@Autowired
 	AidService aService;
 	
+	@Autowired
+	AdiseaseMapper aMapper;
+	
 	@RequestMapping("/aidShow.do")
 	public String aidShow() {
 		return "aidShow";
+	}
+	
+	@RequestMapping("/adisease.do")
+	public String adisease(Model model) {
+		List<Adisease> list = aMapper.findAll();
+		model.addAttribute("dl", list);
+		return "adisease";
 	}
 	
 	@RequestMapping("/aidContent.do")

@@ -1,6 +1,8 @@
 package com.zh.service;
 
 import java.util.List;
+
+import com.zh.pojo.Adisease;
 import com.zh.pojo.Aidtable;
 
 public interface AidService {
@@ -23,4 +25,5 @@ public interface AidService {
 	 * @return
 	 */
 	Integer count();
+	
 }

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
-
+	<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
 </head>
 <body>
     <!-- 顶部开始 -->
@@ -29,6 +29,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','${pageContext.request.contextPath}/user/userShow.do')">个人信息</a></dd>
               <dd><a onclick="x_admin_show('切换帐号','${pageContext.request.contextPath}/login.jsp')">切换帐号</a></dd>
+              <dd><a onclick="x_admin_show('疾病快查','${pageContext.request.contextPath}/care/adisease.do')">疾病快查</a></dd>
               <dd><a href="${pageContext.request.contextPath}/login.jsp">退出</a></dd>
             </dl>
           </li>
@@ -60,12 +61,6 @@
                             <cite>身份信息</cite>  
                         </a>
                     </li >
-                    <li>
-                        <a _href="userHistory.jsp">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>个人病史</cite>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li>
@@ -76,7 +71,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="order-list.jsp">
+                        <a _href="${pageContext.request.contextPath}/user/aliPaySuccessful.do">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>我的挂号</cite>
                         </a>
@@ -133,7 +128,7 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="echarts1.html">
+                        <a _href="${pageContext.request.contextPath}/care/adisease.do">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>疾病预防</cite>
                         </a>

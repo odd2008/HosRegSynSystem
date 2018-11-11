@@ -14,16 +14,15 @@ public class RegRecords {
 	private String dname;
 	// 医生名称
 	private String docname;
-	// 简要说明
-	private String explain;
 	// 预约挂号时间
 	private String tardate;
-	// 当前执行操作的时间
-	private String nowdate;
-	// 是否按时就诊
-	private String flag;
+	// 订单ID
+	private String orderid;
+	// 金额
+	private String money;
 	// 是否缴费
-	private String ismoney;
+	private String ispay;
+	
 	public String getRid() {
 		return rid;
 	}
@@ -48,57 +47,34 @@ public class RegRecords {
 	public void setDocname(String docname) {
 		this.docname = docname;
 	}
-	public String getExplain() {
-		return explain;
-	}
-	public void setExplain(String explain) {
-		this.explain = explain;
-	}
 	public String getTardate() {
 		return tardate;
 	}
 	public void setTardate(String tardate) {
 		this.tardate = tardate;
 	}
-	public String getNowdate() {
-		return nowdate;
+	public String getOrderid() {
+		return orderid;
 	}
-	public void setNowdate(String nowdate) {
-		this.nowdate = nowdate;
+	public void setOrderid(String orderid) {
+		this.orderid = orderid;
 	}
-	public String getFlag() {
-		return flag;
+	public String getMoney() {
+		return money;
 	}
-	public void setFlag(String flag) {
-		this.flag = flag;
+	public void setMoney(String money) {
+		this.money = money;
 	}
-	public String getIsmoney() {
-		return ismoney;
+	public String getIspay() {
+		return ispay;
 	}
-	public void setIsmoney(String ismoney) {
-		this.ismoney = ismoney;
-	}
-	public RegRecords(String rid, String pid, String dname, String docname, String explain, String tardate,
-			String nowdate, String flag, String ismoney) {
-		super();
-		this.rid = rid;
-		this.pid = pid;
-		this.dname = dname;
-		this.docname = docname;
-		this.explain = explain;
-		this.tardate = tardate;
-		this.nowdate = nowdate;
-		this.flag = flag;
-		this.ismoney = ismoney;
-	}
-	public RegRecords() {
-		super();
+	public void setIspay(String ispay) {
+		this.ispay = ispay;
 	}
 	@Override
 	public String toString() {
-		return "RegRecords [rid=" + rid + ", pid=" + pid + ", dname=" + dname + ", docname=" + docname + ", explain="
-				+ explain + ", tardate=" + tardate + ", nowdate=" + nowdate + ", flag=" + flag + ", ismoney=" + ismoney
-				+ "]";
+		return "RegRecords [rid=" + rid + ", pid=" + pid + ", dname=" + dname + ", docname=" + docname + ", tardate="
+				+ tardate + ", orderid=" + orderid + ", money=" + money + ", ispay=" + ispay + "]";
 	}
 	
 }

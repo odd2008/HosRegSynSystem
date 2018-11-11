@@ -10,6 +10,8 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+    	<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
     </head>
     <body>
     <div class="x-body layui-anim layui-anim-up">
@@ -54,4 +56,19 @@
             </div>
         </fieldset>
     </body>
+    <script type="text/javascript">
+   	layui.use('util', function(){
+    	  var util = layui.util;
+    	  //执行
+    	  util.fixbar({
+    	    bar1: true
+    	    ,click: function(type){
+    	      console.log(type);
+    	      if(type === 'bar1'){
+    	        window.location.href='#down';
+    	      }
+    	    }
+    	  });
+   	});
+    </script>
 </html>

@@ -10,6 +10,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+    	<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
     </head>
     <body onload="setTime()">
     <div class="x-body layui-anim layui-anim-up">

@@ -1,6 +1,7 @@
 package com.zh.mapper;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -16,4 +17,10 @@ public interface PatientUserMapper {
 	
 	@Update("update patientuser set ptel=#{ptel},password=#{password} where pid=#{pid}")
 	public Integer update(PatientUser pUser);
+	
+	@Update("update patientuser set pmoney=#{money},pcredit=#{pcredit} where pid=#{pid}")
+	public Integer updateMoney(@Param("pcredit")String pcredit,@Param("money")String money,@Param("pid")String pid);
+	
+	@Update("update patientuser set password='123456' where pname=#{pname} and purl=#{purl}")
+	public Integer updatePassword(@Param("purl")String purl,@Param("pname")String pname);
 }

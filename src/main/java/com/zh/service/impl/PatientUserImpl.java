@@ -35,4 +35,14 @@ public class PatientUserImpl implements PatientUserService {
 		return false;
 	}
 
+	@Override
+	public Integer updateMoney(String pcredit, String money, String pid) {
+		return pMapper.updateMoney(pcredit, money, pid);
+	}
+
+	@Override
+	public Integer updatePassword(String purl, String pname) {
+		return pMapper.updatePassword(purl, pname);
+	}
+
 }

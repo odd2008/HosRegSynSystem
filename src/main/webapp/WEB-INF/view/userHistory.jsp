@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
+		<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
 	</head>
 
 	<body style="padding: 50px;">

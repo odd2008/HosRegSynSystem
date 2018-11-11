@@ -10,11 +10,13 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+    	<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
     </head>
     <body>
     <div class="x-body layui-anim layui-anim-up">
         <fieldset class="layui-elem-field">
-            <legend>武汉市城乡居民基本医疗保险实施办法</legend>
+            <legend id="show">武汉市城乡居民基本医疗保险实施办法</legend>
             <legend>温馨提示: CTRL+F快速查找</legend>
             <div class="layui-field-box">
                 <table class="layui-table" lay-skin="line">
@@ -115,7 +117,7 @@
                         </pre>
                         <br/>
                         <div style="text-align: left;font-size: 22px;">
-                        	<b>第三章 基金构成及支付范围 </b>
+                        	<b id="down">第三章 基金构成及支付范围 </b>
                         </div>
                         <br/>
                         <pre>
@@ -135,4 +137,19 @@
             </div>
         </fieldset>
     </body>
+    <script type="text/javascript">
+    	layui.use('util', function(){
+	    	  var util = layui.util;
+	    	  //执行
+	    	  util.fixbar({
+	    	    bar1: true
+	    	    ,click: function(type){
+	    	      console.log(type);
+	    	      if(type === 'bar1'){
+	    	        window.location.href='#down';
+	    	      }
+	    	    }
+	    	  });
+    	});
+    </script>
 </html>

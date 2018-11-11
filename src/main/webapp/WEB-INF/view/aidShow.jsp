@@ -9,20 +9,13 @@
   		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css" media="all">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
+    	<link rel="Shortcut Icon" href="http://oa.whuh.com/static/images/trasen.ico">
     </head>
     <body>
 
 <table class="layui-hide" id="test" lay-filter="test"></table>
-<script type="text/html" id="toolbarDemo">
-  <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
-    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
-  </div>
-</script>
 <script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">查看全文</a>
 </script>
 <script>
 layui.use('table', function(){
@@ -35,9 +28,9 @@ layui.use('table', function(){
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
       ,{field:'aid', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
-      ,{field:'adesc', title:'状况描述', width:120}
-      ,{field:'acontent', title:'急救措施', width:500}
-      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+      ,{field:'adesc', title:'状况描述', width:100}
+      ,{field:'acontent', title:'急救措施', width:700}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:100}
     ]]
     ,page: true
   });
@@ -62,22 +55,16 @@ layui.use('table', function(){
   
   //监听行工具事件
   table.on('tool(test)', function(obj){
-    var data = obj.data;
-    if(obj.event === 'del'){
-      layer.confirm('真的删除行么', function(index){
-        obj.del();
-        layer.close(index);
-      });
-    } else if(obj.event === 'edit'){
-      layer.prompt({
-        formType: 2
-        ,value: data.acontent
-      }, function(value, index){
-        obj.update({
-        	acontent: value
-        });
-        layer.close(index);
-      });
+  	var data = obj.data;
+    if(obj.event === 'del'){} 
+    else if(obj.event === 'edit'){
+      layui.use('layer', function(){
+  		 var layer = layui.layer;
+		 //8s后自动关闭
+  		 layer.msg(data.acontent, {
+	         time: 8000, btn: ['好的']
+	     });
+	  }); 
     }
   });
 });

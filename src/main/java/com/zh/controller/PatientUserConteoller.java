@@ -43,4 +43,14 @@ public class PatientUserConteoller {
 		}
 		return "failure";
 	}
+	
+	@RequestMapping("/updatePassword.do")
+	@ResponseBody
+	public String updatePassword(String pname,String purl) {
+		Integer i = pService.updatePassword(purl, pname);
+		if(i == 0) {
+			return "failure";
+		}
+		return "success";
+	}
 }

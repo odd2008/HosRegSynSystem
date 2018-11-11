@@ -169,6 +169,21 @@
     	<artifactId>jackson-databind</artifactId>
     	<version>2.9.5</version>
 	</dependency>
+	
+	<dependency>
+		<groupId>com.alipay</groupId>
+		<artifactId>alipay-source-java</artifactId>
+		<version>20170324180803</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>com.alipay</groupId>
+    	<artifactId>alipay-java</artifactId>
+    	<version>20170324180803</version>
+	</dependency>
+	
+	
+	
   </dependencies>
  
   <build>

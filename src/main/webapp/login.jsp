@@ -237,6 +237,30 @@
 	         }
          }  
          
+         function updatePassword() {
+			var pname = $("#respname").val();
+			var purl = $("#respurl").val();
+			if(pname==''||purl==''){
+    	        alert('请输入完整信息');
+    	    }else{
+    	        $.ajax({
+    	   			type:'POST',
+    	   			url:'${pageContext.request.getContextPath()}/patient/updatePassword.do',
+    	   			data:{"pname":pname,"purl":purl},
+    	   			success:function(result){
+    	   				if(result == 'success'){
+    	   					alert("密码已被重置为123456,请登录后尽快修改密码")
+    	   				} else{
+    	   					alert("重置失败");
+    	   				}
+    	   			},
+    	   		    error: function (err) {
+    	   		    	alert("数据库异常~")
+    	   		    }
+    	   		}); 
+    	    }
+		 }
+         
        	 function login(){
          	if ($("#pname").val()== ""||$("#password").val()== "") {	
          		alert("请填写完整信息!");
@@ -258,6 +282,8 @@
     	   			success:function(result){
     	   				if(result == 'success'){
     	   					window.location.href = '${pageContext.request.getContextPath()}/user/index.do';
+    	   				} else{
+    	   					alert("用户名密码不正确~");
     	   				}
     	   			},
     	   		    error: function (err) {
@@ -295,9 +321,9 @@
                  </div>
             <div class="step forgetPassword">
                 <div class="loginBox">
-                    <div><span>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span><input name="userAccount" class="textLineInput long" type="text" placeholder="请输入您的账号" value="" autocomplete="off"></div>
-                    <div><span>密保问题：</span><input name="mobilePhone" class="textLineInput long" type="text" placeholder="请输入答案" value="" autocomplete="off"></div>
-                    <div class="btnBox"><button class="nextStep subCaptcha" type="button">提  交</button></div>
+                    <div><span>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span><input id="respname" class="textLineInput long" type="text" placeholder="请输入您的账号" value="" autocomplete="off"></div>
+                    <div><span>密保问题：</span><input id="respurl" class="textLineInput long" type="text" placeholder="请输入答案" value="" autocomplete="off"></div>
+                    <div class="btnBox"><button class="nextStep subCaptcha" type="button" onclick="updatePassword()">提  交</button></div>
                     <div><a href="javascript:void(0);" class="backLogin">[返回login]</a></div>
                 </div>
             </div>
