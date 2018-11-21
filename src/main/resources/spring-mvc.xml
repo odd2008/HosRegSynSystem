@@ -17,7 +17,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">    
 
 	<!-- 使用注解的包，包括子集 -->
-	<context:component-scan base-package="com.kxm.controller" />
+	<context:component-scan base-package="com.zh.controller" />
 	<!-- 注解的驱动，会自动注册几个bean，其中一个功能把对象和json进行转化 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<!-- 定义静态资源文件映射路径 -->

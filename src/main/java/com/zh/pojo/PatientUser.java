@@ -8,7 +8,7 @@ package com.zh.pojo;
 public class PatientUser {
 	// 用户ID
 	private String pid;
-	// 用户照片路径
+	// 用户密保问题答案
 	private String purl;
 	// 用户姓名
 	private String pname;

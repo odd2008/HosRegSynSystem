@@ -101,12 +101,6 @@
       <version>${jstl.version}</version>
     </dependency>
  
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>${servlet-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
  
     <!-- pageHelper -->
     <dependency>
@@ -175,6 +169,21 @@
     	<artifactId>jackson-databind</artifactId>
     	<version>2.9.5</version>
 	</dependency>
+	
+	<dependency>
+		<groupId>com.alipay</groupId>
+		<artifactId>alipay-source-java</artifactId>
+		<version>20170324180803</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>com.alipay</groupId>
+    	<artifactId>alipay-java</artifactId>
+    	<version>20170324180803</version>
+	</dependency>
+	
+	
+	
   </dependencies>
  
   <build>
