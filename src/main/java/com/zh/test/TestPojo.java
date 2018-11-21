@@ -23,4 +23,9 @@ public class TestPojo {
     public void setA(String a) {
         this.a = a;
     }
+
+    public static void test () {
+        System.out.println("测试");
+    }
+
 }
