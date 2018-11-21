@@ -30,6 +30,7 @@
 							<br><span>订单ID:&nbsp;</span>${rl.orderid}<i class="layui-icon"></i>
 							<br><span>订单金额:&nbsp;</span>${rl.money}<i class="layui-icon"></i>
 							<br><span>是否缴费:&nbsp;</span>${rl.ispay}<i class="layui-icon"></i>
+							<c:if test="${rl.ispay=='未支付'}"><span class="green"><br><button onclick="pay('${rl.orderid}','${rl.money}')" class="layui-btn">立即支付</button></span></c:if>
 						</p>
 					</div>
 				</li>   
@@ -37,13 +38,17 @@
 		</ul>
 	</body>
 <script type="text/javascript">
+	function pay(id,money){
+		// 打开支付宝接口
+		window.open('${pageContext.request.getContextPath()}/user/aliPay.do?WIDout_trade_no='+id+'&WIDtotal_amount='+money+'&WIDsubject=自助挂号付费');
+	}
 	function loadPay(){
 		var flag = '${out_trade_no}';
 		if (flag != '') {
 			layui.use('layer', function(){
 		  		var layer = layui.layer;
 				//8s后自动关闭
-		  		layer.msg('你已挂号成功，请按时前往医院就诊', {
+		  		layer.msg('支付成功，请在我的挂号中查阅', {
 			        time: 8000, btn: ['好的']
 			    });
 			}); 

@@ -16,7 +16,7 @@ public interface RegRecordsService {
 	 * @param orderid
 	 * @return
 	 */
-	public List<RegRecords> findByOrderid(String orderid);
+	public RegRecords findByOrderid(String orderid);
 	
 	/**
 	 * 添加数据

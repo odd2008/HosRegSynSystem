@@ -14,7 +14,7 @@ public interface RegRecordsMapper {
 	public List<RegRecords> findByPid(String pid);
 	
 	@Select("select rid,pid,dname,docname,tardate,money,ispay from regrecords where orderid = #{orderid} ")
-	public List<RegRecords> findByOrderid(String orderid);
+	public RegRecords findByOrderid(String orderid);
 	
 	@Insert("insert into regrecords values(null,#{pid},#{dname},#{docname},#{tardate},#{orderid},#{money},'未支付')")
 	public Integer insert(RegRecords records);

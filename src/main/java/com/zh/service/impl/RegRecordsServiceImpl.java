@@ -21,7 +21,7 @@ public class RegRecordsServiceImpl implements RegRecordsService {
 	}
 
 	@Override
-	public List<RegRecords> findByOrderid(String orderid) {
+	public RegRecords findByOrderid(String orderid) {
 		return rMapper.findByOrderid(orderid);
 	}
 

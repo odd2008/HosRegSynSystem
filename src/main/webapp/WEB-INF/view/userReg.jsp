@@ -299,7 +299,7 @@
    			success:function(result){
    				if (result = 'success') {
    					// 打开支付宝接口
-   					window.open('${pageContext.request.getContextPath()}/user/aliPay.do?WIDout_trade_no='+id+'&WIDtotal_amount='+amount+'&WIDsubject=自挂挂号付费');
+   					window.open('${pageContext.request.getContextPath()}/user/aliPay.do?WIDout_trade_no='+id+'&WIDtotal_amount='+amount+'&WIDsubject=自助挂号付费');
    				} else {
    					alert("下订单失败，请联系管理员")
    				}

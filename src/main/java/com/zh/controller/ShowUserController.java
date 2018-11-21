@@ -168,7 +168,22 @@ public class ShowUserController {
 	
 	@RequestMapping("/aliPaySuccessful.do")
 	public String aliPaySuccess(Model model,HttpServletRequest request,String trade_no,String out_trade_no,String total_amount) {
+		// 更新为已支付
 		if (out_trade_no != null) {
+			// 先检查是否是为未支付，更改其状态
+			RegRecords regRecords = rService.findByOrderid(out_trade_no);
+			if (("未支付").equals(regRecords.getIspay())) {
+				// 如果是查出来是未支付，就获取旧对象，修改其信用度和欠款
+				PatientUser pUser = (PatientUser) request.getSession().getAttribute("user");
+				String pid = pUser.getPid();
+				Integer pmoney = Integer.valueOf(pUser.getPmoney()) - Integer.valueOf(regRecords.getMoney());
+				Integer pcredit = Integer.valueOf(pUser.getPcredit()) + 10;
+				pService.updateMoney(pcredit+"", pmoney+"", pid);
+				// 生成新对象
+				PatientUser newUser = pService.login(pUser);
+				request.getSession().setAttribute("user", newUser);
+			}
+			// 再更新为已支付
 			Integer i = rService.update(out_trade_no);
 			model.addAttribute("out_trade_no", out_trade_no);
 		}
