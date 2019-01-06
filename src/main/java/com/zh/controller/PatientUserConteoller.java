@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zh.pojo.PatientUser;
 import com.zh.service.PatientUserService;
+import com.zh.service.RegRecordsService;
 
 @Controller
 @RequestMapping("/patient")
@@ -21,6 +23,9 @@ public class PatientUserConteoller {
 	
 	@Autowired
 	PatientUserService pService;
+	
+	@Autowired
+	RegRecordsService rService;
 	
 	@RequestMapping("/add.do")
 	@ResponseBody
@@ -48,6 +53,22 @@ public class PatientUserConteoller {
 	@ResponseBody
 	public String updatePassword(String pname,String purl) {
 		Integer i = pService.updatePassword(purl, pname);
+		if(i == 0) {
+			return "failure";
+		}
+		return "success";
+	}
+	
+	@RequestMapping("/userEvaluate.do")
+	public String userEvaluate(String rid, Model m) {
+		m.addAttribute("rid", rid);
+		return "userEvaluate";
+	}
+	
+	@RequestMapping("/addEvaluate.do")
+	@ResponseBody
+	public String addEvaluate(String rid, String evaluate) {
+		Integer i = rService.addEvaluate(rid, evaluate);
 		if(i == 0) {
 			return "failure";
 		}

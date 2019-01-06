@@ -31,6 +31,15 @@
 							<br><span>订单金额:&nbsp;</span>${rl.money}<i class="layui-icon"></i>
 							<br><span>是否缴费:&nbsp;</span>${rl.ispay}<i class="layui-icon"></i>
 							<c:if test="${rl.ispay=='未支付'}"><span class="green"><br><button onclick="pay('${rl.orderid}','${rl.money}')" class="layui-btn">立即支付</button></span></c:if>
+							
+							<c:if test="${rl.evaluate == null || rl.evaluate == ''}">
+								<span class="green">
+									<br><button onclick="openIfream('${rl.rid}')" class="layui-btn">评价医师</button>
+								</span>
+							</c:if>
+							<c:if test="${rl.evaluate != null && rl.evaluate != ''}">
+								<br><span>我的评价:&nbsp;</span>${rl.evaluate}<i class="layui-icon"></i>
+							</c:if>
 						</p>
 					</div>
 				</li>   
@@ -53,6 +62,30 @@
 			    });
 			}); 
 		}
+	}
+	
+	function openIfream(rid) {
+		var url = ''
+		layer.open({
+	        type: 2
+	        , title: '我的评价'
+	        , area: ['600px', '400px']
+	        , shade: 0
+	        , maxmin: true
+	        , offset: 'auto'//显示坐标-auto居中
+	        , content:'${pageContext.request.contextPath}/patient/userEvaluate.do?rid=' + rid
+	        , btn: ['关闭']
+	        , yes: function () {
+	            layer.closeAll();
+	        }
+	        , zIndex: layer.zIndex //重点1
+	        , success: function (layero) {
+	            layer.setTop(layero); //重点2
+	        },
+	        end: function () {
+	            window.location.reload();
+	        }
+	    });
 	}
 </script>
 </html>

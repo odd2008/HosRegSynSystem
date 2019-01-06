@@ -35,4 +35,9 @@ public class RegRecordsServiceImpl implements RegRecordsService {
 		return rMapper.update(orderid);
 	}
 
+	@Override
+	public Integer addEvaluate(String rid, String evaluate) {
+		return rMapper.addEvaluate(rid, evaluate);
+	}
+
 }

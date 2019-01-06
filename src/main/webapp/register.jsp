@@ -238,7 +238,7 @@
                         <input name="input" id="input" class="textInput" style="width: 135px;" type="text" placeholder="请输入右侧图中的文字" value="" onkeypress="if(event.keyCode==13) focusNextInput(this);"></p>
                         <span id="imageCode" style="width:64px"><input type = "button" id="code" onclick="createCode()"/></span></div>
                         <p class="loginAlt"></p>
-                        <div class="btnBox"><button type="button" onclick="login()">登　录</button></div>
+                        <div class="btnBox"><button type="button" onclick="login()">注 册</button></div>
                     </form>
                 </div>
             </div>

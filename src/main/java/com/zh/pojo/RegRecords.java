@@ -22,6 +22,8 @@ public class RegRecords {
 	private String money;
 	// 是否缴费
 	private String ispay;
+	// 评价
+	private String evaluate;
 	
 	public String getRid() {
 		return rid;
@@ -71,10 +73,16 @@ public class RegRecords {
 	public void setIspay(String ispay) {
 		this.ispay = ispay;
 	}
+	public String getEvaluate() {
+		return evaluate;
+	}
+	public void setEvaluate(String evaluate) {
+		this.evaluate = evaluate;
+	}
 	@Override
 	public String toString() {
 		return "RegRecords [rid=" + rid + ", pid=" + pid + ", dname=" + dname + ", docname=" + docname + ", tardate="
-				+ tardate + ", orderid=" + orderid + ", money=" + money + ", ispay=" + ispay + "]";
+				+ tardate + ", orderid=" + orderid + ", money=" + money + ", ispay=" + ispay + ", evaluate=" + evaluate
+				+ "]";
 	}
-	
 }

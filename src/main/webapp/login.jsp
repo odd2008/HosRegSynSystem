@@ -324,7 +324,7 @@
                     <div><span>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span><input id="respname" class="textLineInput long" type="text" placeholder="请输入您的账号" value="" autocomplete="off"></div>
                     <div><span>密保问题：</span><input id="respurl" class="textLineInput long" type="text" placeholder="请输入答案" value="" autocomplete="off"></div>
                     <div class="btnBox"><button class="nextStep subCaptcha" type="button" onclick="updatePassword()">提  交</button></div>
-                    <div><a href="javascript:void(0);" class="backLogin">[返回login]</a></div>
+                    <div><a href="javascript:void(0);" class="backLogin">[返回登录]</a></div>
                 </div>
             </div>
         </div>

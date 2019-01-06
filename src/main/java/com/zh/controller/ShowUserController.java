@@ -30,7 +30,7 @@ import com.zh.util.AlipayConfig;
 @Controller
 @RequestMapping("/user")
 public class ShowUserController {
-	
+
 	@Autowired
 	PatientUserService pService;
 	
