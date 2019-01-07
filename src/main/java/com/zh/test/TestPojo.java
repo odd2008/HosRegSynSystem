@@ -10,10 +10,6 @@ package com.zh.test;
  */
 public class TestPojo {
 
-    /**
-     * a : 123
-     */
-
     private String a;
 
     public String getA() {
